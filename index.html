@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Flocking Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        canvas {
+            display: block;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h2>Flocking Simulation</h2>
+        <p>This simulation shows how simple rules can create complex, natural-looking behavior.</p>
+        <p>White circles: What each bird can see<br>
+           Red circles: Personal space bubble<br>
+           White triangles: Birds</p>
+        <p>Try modifying the SETTINGS in the code to see how it changes the behavior!</p>
+    </div>
+    <script src="flocking-simulation.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flocking Simulation Test</title>
+    <style>
+        /* Bare minimum CSS to show if things are working */
+        body {
+            margin: 0;
+            background: #333;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        #status {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: none; /* Will be shown by JavaScript */
+        }
+    </style>
+</head>
+<body>
+    <div id="status">
+        <h2>Testing Status</h2>
+        <div id="jsStatus">JavaScript File: <span>Testing...</span></div>
+        <div id="canvasStatus">Canvas Creation: <span>Testing...</span></div>
+        <div id="animationStatus">Animation: <span>Testing...</span></div>
+        <p id="message"></p>
+    </div>
+
+    <!-- Test script runs before main simulation -->
+    <script>
+        // Show status panel
+        document.getElementById('status').style.display = 'block';
+        
+        // Function to update status
+        function updateStatus(id, success, message = '') {
+            const element = document.getElementById(id).getElementsByTagName('span')[0];
+            element.style.color = success ? '#4CAF50' : '#f44336';
+            element.textContent = success ? 'Success!' : 'Failed';
+            if (message) {
+                document.getElementById('message').textContent = message;
+            }
+        }
+
+        // Test if main script loads
+        window.addEventListener('error', function(e) {
+            if (e.filename.includes('flocking-simulation.js')) {
+                updateStatus('jsStatus', false, 'Could not load flocking-simulation.js. Check file name and location.');
+            }
+        });
+
+        // Will be called by main script
+        window.testCanvas = function(success) {
+            updateStatus('canvasStatus', success);
+        };
+
+        // Will be called by main script
+        window.testAnimation = function(success) {
+            updateStatus('animationStatus', success);
+            if (success) {
+                // Hide status panel after 3 seconds if everything works
+                setTimeout(() => {
+                    document.getElementById('status').style.display = 'none';
+                }, 3000);
+            }
+        };
+    </script>
+
+    <!-- Main simulation script -->
+    <script src="flocking-simulation.js"></script>
+</body>
+</html>
