@@ -31,8 +31,8 @@ This repository contains supporting materials for the academic paper "Integratin
   - Checks animation functionality
   - Provides clear error messages if issues occur
 
-### 2. 18-Week Course Framework
-- Complete course framework for computer programming instruction
+### 2. Course Framework Files
+- Complete course framework for computer programming instruction which includes: overview document, unit plans, and assessment package
 - Designed as a project-based model that builds up skill and knowledge starting from the initial html and javascript files
 - Emphasizes student-driven exploration and discovery
 
